@@ -1,6 +1,7 @@
 import requests
-import random
-import string
-from helpers.global_helpers import random_password, random_name, random_email
+from data.links import create_new_user_link
 
-def crete_new_user():
+
+def create_new_user(data):
+    response = requests.post(create_new_user_link, json=data)
+    return response

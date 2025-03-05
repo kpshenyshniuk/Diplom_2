@@ -3,7 +3,7 @@ import string
 
 
 def random_email(domain="gmail.com", length=10):
-    username = f'{"".join(random.choices(string.ascii_letters + string.digits, k=length))}'
+    username = ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
     return f"{username}@{domain}"
 
 

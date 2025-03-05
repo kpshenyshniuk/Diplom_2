@@ -33,3 +33,6 @@ class CreateUser:
 
     def get_name(self):
         return {'name': self.data['name']}
+
+    def add(self):
+        return self.data

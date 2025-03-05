@@ -1,20 +1,27 @@
 import pytest
 from generators.create_user_generator import CreateUser
 from helpers.create_user import create_new_user
+from helpers.login import login_user
 
 
 class TestCreateUser:
 
-    def setup_method(self):
-        self.data = CreateUser().add()  # Создаём объект
+    def setup_class(self):
+        self.data_for_register = CreateUser().add()
+        self.response_create_user = create_new_user(self.data_for_register)
+        self.data_for_login = {
+            'email': self.data_for_register['email'],
+            'password': self.data_for_register['password']
+        }
 
-
-    def test_cteate_new_user(self):
-        response = create_new_user(self.data)
-
+    def test_login_registered_user(self):
+        response = login_user(self.data_for_login)
+        print(response.json())
         assert response.status_code == 200
-        assert response.json()['user']['email'] == self.data['email']
-        assert response.json()['user']['name'] == self.data['name']
+
+
+
+
 
     def test_create_already_registered_user(self):
         create_new_user(self.data)
