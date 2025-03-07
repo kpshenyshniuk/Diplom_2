@@ -1,5 +1,5 @@
 import requests
-from data.links import create_new_user_link
+from data.data import create_new_user_link
 
 
 def create_new_user(data):

@@ -1,6 +1,6 @@
 import requests
 
-from data.links import login_link
+from data.data import login_link
 
 
 def login_user(data):
