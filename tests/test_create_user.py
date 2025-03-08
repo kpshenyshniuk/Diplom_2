@@ -6,10 +6,9 @@ from helpers.create_user import create_new_user
 class TestCreateUser:
 
     def setup_method(self):
-        self.data = CreateUser().add()  # Создаём объект
+        self.data = CreateUser().add()
 
-
-    def test_cteate_new_user(self):
+    def test_create_new_user(self):
         response = create_new_user(self.data)
 
         assert response.status_code == 200
@@ -24,11 +23,10 @@ class TestCreateUser:
         assert response.json()['message'] == 'User already exists'
 
     @pytest.mark.parametrize('data', [CreateUser().set_password('').add(),
-                                       CreateUser().set_email('').add(),
-                                       CreateUser().set_name('').add()])
-    def test_create_user_without_password_field(self,data):
+                                      CreateUser().set_email('').add(),
+                                      CreateUser().set_name('').add()])
+    def test_create_user_without_password_field(self, data):
         response = create_new_user(data)
 
         assert response.status_code == 403
         assert response.json()['message'] == 'Email, password and name are required fields'
-        print(response.json())

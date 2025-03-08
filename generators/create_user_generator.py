@@ -1,7 +1,6 @@
 from helpers.global_helpers import random_password, random_name, random_email
 
 
-
 class CreateUser:
 
 

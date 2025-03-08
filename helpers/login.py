@@ -1,5 +1,4 @@
 import requests
-
 from data.data import login_link
 
 

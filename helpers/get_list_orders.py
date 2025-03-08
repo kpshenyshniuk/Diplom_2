@@ -1,5 +1,5 @@
 import requests
-from data.data import create_new_user_link, get_user_orders_link
+from data.data import get_user_orders_link
 
 
 def get_user_orders(token):

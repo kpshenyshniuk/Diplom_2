@@ -1,5 +1,4 @@
 import pytest
-
 from generators.create_user_generator import CreateUser
 from helpers.create_user import create_new_user
 from helpers.login import login_user

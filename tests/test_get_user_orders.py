@@ -20,6 +20,6 @@ class TestGetUserOrders:
         create_order(token, ingredients)
         headers = {"Authorization": f""}
         response = requests.get(get_user_orders_link, headers=headers)
-        print(response.json())
+
         assert response.status_code == 401
         assert response.json()['message'] == 'You should be authorised'

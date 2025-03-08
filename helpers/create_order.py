@@ -7,5 +7,5 @@ def create_order(token, ingredients):
         "Authorization": f"{token}",
         "Content-Type": "application/json"
     }
-    response = requests.post('https://stellarburgers.nomoreparties.site/api/orders', headers=headers, json=ingredients)
+    response = requests.post(create_order_link, headers=headers, json=ingredients)
     return response
