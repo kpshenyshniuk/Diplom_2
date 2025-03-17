@@ -1,4 +1,4 @@
-from helpers.global_helpers import random_password, random_name, random_email
+from helpers.utils import random_password, random_name, random_email
 
 
 class CreateUser:

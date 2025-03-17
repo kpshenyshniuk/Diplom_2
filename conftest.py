@@ -1,17 +1,23 @@
 import pytest
 from generators.create_user_generator import CreateUser
-from helpers.create_user import create_new_user
-from helpers.login import login_user
+from logic.user_service import create_new_user, delete_user, login_user
+from helpers.utils import random_email, random_password, random_name
 
 
 @pytest.fixture
 def create_new_user_fixture():
-    data_for_register = CreateUser().add()
-    create_new_user(data_for_register)
+    """Фикстура для создания нового пользователя и его удаления после теста."""
+    data_for_register = {
+            'email': random_email(),
+            'password': random_password(),
+            'name': random_name()
+        }
+    response = create_new_user(data_for_register)
+    response_json = response.json()
+    access_token = response_json.get('accessToken')
+
     yield data_for_register
-    """
-        Потом добавить бан узера
-        """
+    delete_user(access_token)
 
 
 @pytest.fixture
