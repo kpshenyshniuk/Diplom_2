@@ -2,6 +2,7 @@ from data.data import correct_ingredients, error_ingredient_id, not_existed_ingr
 from logic.order_service import create_order
 import allure
 
+
 class TestCreateOrder:
 
     @allure.title("Создание заказа авторизированным пользователем")

@@ -1,5 +1,4 @@
 import pytest
-from generators.create_user_generator import CreateUser
 from logic.user_service import create_new_user, delete_user, login_user
 from helpers.utils import random_email, random_password, random_name
 
@@ -27,3 +26,12 @@ def login_registered_user(create_new_user_fixture):
         'password': create_new_user_fixture['password']}
     response = login_user(data_for_login)
     yield response.json()
+
+@pytest.fixture
+def data_for_user():
+    data = {
+        'email': random_email(),
+        'password': random_password(),
+        'name': random_name()
+    }
+    yield data

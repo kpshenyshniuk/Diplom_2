@@ -10,17 +10,17 @@ class TestCreateUsers:
 
 
     @allure.title("Создание нового пользователя")
-    def test_create_new_user(self):
-        response = create_new_user(self.data)
+    def test_create_new_user(self, data_for_user):
+        response = create_new_user(data_for_user)
 
         assert response.status_code == 200
-        assert response.json()['user']['email'] == self.data['email']
-        assert response.json()['user']['name'] == self.data['name']
+        assert response.json()['user']['email'] == data_for_user['email']
+        assert response.json()['user']['name'] == data_for_user['name']
 
     @allure.title("Создание пользователя с уже существующими кредами")
-    def test_create_already_registered_user(self):
-        create_new_user(self.data)
-        response = create_new_user(self.data)
+    def test_create_already_registered_user(self, data_for_user):
+        create_new_user(data_for_user)
+        response = create_new_user(data_for_user)
 
         assert response.status_code == 403
         assert response.json()['message'] == User_already_exist
